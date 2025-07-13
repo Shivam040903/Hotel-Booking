@@ -1,10 +1,11 @@
 import React from 'react'
-import Hero from '../component/Hero'
+import HeroSec from '../component/HeroSec'
+
 
 const Homepage = () => {
   return (
     <>
-        <Hero/>
+        <HeroSec/>
     </>
   )
 }

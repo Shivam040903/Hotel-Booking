@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 import { Link } from "react-router-dom";
 import {assets} from "../assets/assets"
 
-const Navbar = () => {
-    const navLinks = [
+const Nav = () => {
+     const navLinks = [
         { name: 'Home', path: '/' },
         { name: 'Hotels', path: '/rooms' },
         { name: 'Experience', path: '/' },
@@ -80,4 +80,4 @@ const Navbar = () => {
     );
 }
 
-export default Navbar
+export default Nav
