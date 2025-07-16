@@ -27,8 +27,14 @@ const Nav = () => {
     const location = useLocation()
 
     useEffect(() => {
-
-        setIsScrolled(location.pathname !== '/');
+        
+        if(location.pathname !== '/'){
+            setIsScrolled(true);
+            return;
+        }else{
+            setIsScrolled(false)
+        }
+        setIsScrolled(prev => location.pathname !== '/' ? true : prev)
 
 
         const handleScroll = () => {
