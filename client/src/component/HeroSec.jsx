@@ -32,7 +32,7 @@ const HeroSec = () => {
             />
             <datalist id="destinations">
               {cities.map((city,index)=>(
-                <option value={city}/>
+                <option key={index} value={city}/>
               ))}
             </datalist>
           </div>
