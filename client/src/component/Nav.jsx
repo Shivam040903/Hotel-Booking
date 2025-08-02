@@ -22,7 +22,7 @@ const Nav = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const {openSignIn} = useClerk()
-    const{user} = useUser()
+    const {user} = useUser()
     const navigate = useNavigate()
     const location = useLocation()
 
