@@ -1,19 +1,27 @@
 import Hotel from "../models/Hotel.js";
 import Room from "../models/Room.js";
+import { v2 as cloudinary } from "cloudinary";
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 //Api to create a new room for Hotel
 export const createRoom  = async (req, res) => {
     try {
         const {roomType, pricePerNight, amenities} = req.body;
-        const hotel = await Hotel.findOne({owner: req.auth.userId})
+        const hotel = await Hotel.findOne({owner: req.auth().userId})
 
         if(!hotel) return res.json({ success: false, message: "No Hotel Found" });
  
         //upload images to cloudinary
-        const uploadImages = req.file.map(async (file) => {
+        const uploadImages = req.files.map(async (file) => {
             const response = await cloudinary.uploader.upload(file.path);
             return response.secure_url;
         })
+        console.log(uploadImages);
 
         const images = await Promise.all(uploadImages);
 
@@ -26,7 +34,7 @@ export const createRoom  = async (req, res) => {
         })
         res.json({success: true, message: "Room created successfully"})
     } catch (error) {
-        res.json({success: false, message: error.message})
+        res.json({success: false, message:error.message})
     }
     
 }
@@ -49,7 +57,7 @@ export const getRoom  = async (req, res) => {
 //API to get all rooms for a specific hotel
 export const getOwnerRoom  = async (req, res) => {
     try {
-        const hotelData = await Hotel({owner: req.auth.userId})
+        const hotelData = await Hotel({owner: req.auth().userId})
         const rooms = await Room.find({hotel: hotelData._id.toString()}).populate("hotel");
 
         res.json({success: true, rooms});
