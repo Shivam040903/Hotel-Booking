@@ -18,8 +18,8 @@ const AddRoom = () => {
         roomType: '',
         pricePerNight: 0,
         amenities: {
-            'Free Wifi': false,
-            'Free Brakefast': false,
+            'Free WiFi': false,
+            'Free Breakfast': false,
             'Room Service': false,
             'Mountain View': false,
             'Pool Access': false
@@ -60,7 +60,7 @@ const AddRoom = () => {
                     roomType: '',
                     pricePerNight: 0,
                     amenities: {
-                        'Free Wifi': false,
+                        'Free WiFi': false,
                         'Free Brakefast': false,
                         'Room Service': false,
                         'Mountain View': false,
@@ -105,7 +105,7 @@ const AddRoom = () => {
                     <option value="">Select Room Type</option>
                     <option value="Single Bed">Single Bed</option>
                     <option value="Double Bed">Double Bed</option>
-                    <option value="Luxury Room">Single Bed</option>
+                    <option value="Luxury Room">Luxury room</option>
                     <option value="Family Suite">Family Suite</option>
                 </select>
             </div>
